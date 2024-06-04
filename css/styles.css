@@ -1,0 +1,495 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+#video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  /* Ensure the video stays behind other content */
+  overflow: hidden;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#game-over {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: red;
+  display: none;
+  /* Initially hidden */
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.hidden {
+  display: none;
+}
+
+#raccoon {
+  position: absolute;
+  bottom: 0;
+  right: -1000px;
+  /* Initially position the raccoon outside the screen on the right */
+  width: 180px;
+  height: auto;
+  z-index: 2;
+  /* Place the raccoon above the video background */
+  animation: moveRaccoon 6s linear infinite;
+  /* Animate the raccoon's movement */
+  animation-delay: 6s;
+}
+
+@keyframes moveRaccoon {
+  from {
+    right: -100px;
+  }
+
+  to {
+    right: calc(100% + 100px);
+    /* Move the raccoon outside the screen on the left */
+  }
+}
+
+#play-pause-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#play-pause-button:hover {
+  transform: scale(1.1);
+}
+
+#game-container {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+}
+
+#character,
+#obstacle,
+#game-over {
+  position: absolute;
+  z-index: 2;
+  /* Place these elements above the video */
+}
+
+#character {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: auto;
+  transition: bottom 1.4s ease;
+}
+
+#obstacle {
+  width: 60px;
+  height: auto;
+  animation: moveObstacle 10s linear infinite alternate;
+}
+
+@keyframes moveObstacle {
+  from {
+    transform: translateX(1000%);
+  }
+
+  to {
+    transform: translateX(-4000%);
+  }
+}
+
+#score-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: rgb(0, 0, 0);
+  font-size: 22px;
+  z-index: 3;
+  font-family: "Comic Neue", sans-serif;
+}
+
+#your-score,
+#high-score {
+  margin: 5px 0;
+}
+
+#eagle {
+  position: absolute;
+  top: 200px;
+  /* Adjust the starting position */
+  right: -1000px;
+  /* Initially position the eagle outside the screen on the right */
+  width: 140px;
+  height: auto;
+  z-index: 2;
+  /* Place the eagle above the video background */
+  animation: moveEagle 7s linear infinite;
+  /* Animate the eagle's movement */
+  animation-delay: 26s;
+}
+
+@keyframes moveEagle1 {
+  0% {
+    left: -100px;
+    top: 20%;
+  }
+
+  40% {
+    top: 54%;
+  }
+
+  100% {
+    left: calc(100% + 100px);
+    top: 20%;
+  }
+}
+
+@keyframes moveEagle2 {
+  0% {
+    left: -100px;
+    top: 40%;
+  }
+
+  50% {
+    top: 70%;
+  }
+
+  100% {
+    left: calc(100% + 100px);
+    top: 40%;
+  }
+}
+
+@keyframes moveEagle3 {
+  0% {
+    left: -100px;
+    top: 30%;
+  }
+
+  30% {
+    top: 50%;
+  }
+
+  60% {
+    top: 70%;
+  }
+
+  100% {
+    left: calc(100% + 100px);
+    top: 30%;
+  }
+}
+
+@keyframes moveEagle4 {
+  0% {
+    left: -100px;
+    top: 10%;
+  }
+
+  25% {
+    top: 60%;
+  }
+
+  50% {
+    top: 20%;
+  }
+
+  75% {
+    top: 40%;
+  }
+
+  100% {
+    left: calc(100% + 100px);
+    top: 10%;
+  }
+}
+
+@keyframes moveEagle5 {
+  0% {
+    left: -100px;
+    top: 50%;
+  }
+
+  30% {
+    top: 30%;
+  }
+
+  60% {
+    top: 50%;
+  }
+
+  100% {
+    left: calc(100% + 100px);
+    top: 60%;
+  }
+}
+
+@keyframes moveEagle6 {
+  0% {
+    left: -100px;
+    top: 20%;
+  }
+
+  20% {
+    top: 40%;
+  }
+
+  50% {
+    top: 10%;
+  }
+
+  80% {
+    top: 50%;
+  }
+
+  100% {
+    left: calc(100% + 100px);
+    top: 20%;
+  }
+}
+
+@keyframes moveEagle7 {
+  0% {
+    left: -100px;
+    top: 60%;
+  }
+
+  25% {
+    top: 20%;
+  }
+
+  50% {
+    top: 70%;
+  }
+
+  75% {
+    top: 30%;
+  }
+
+  100% {
+    left: calc(100% + 100px);
+    top: 60%;
+  }
+}
+
+@keyframes moveEagle8 {
+  0% {
+    left: -100px;
+    top: 30%;
+  }
+
+  40% {
+    top: 10%;
+  }
+
+  70% {
+    top: 50%;
+  }
+
+  100% {
+    left: calc(100% + 100px);
+    top: 30%;
+  }
+}
+
+@keyframes moveEagle9 {
+  0% {
+    left: -100px;
+    top: 70%;
+  }
+
+  30% {
+    top: 30%;
+  }
+
+  50% {
+    top: 50%;
+  }
+
+  80% {
+    top: 20%;
+  }
+
+  100% {
+    left: calc(100% + 100px);
+    top: 70%;
+  }
+}
+
+@keyframes moveEagle10 {
+  0% {
+    left: -100px;
+    top: 20%;
+  }
+
+  35% {
+    top: 50%;
+  }
+
+  65% {
+    top: 30%;
+  }
+
+  100% {
+    left: calc(100% + 100px);
+    top: 20%;
+  }
+}
+
+@keyframes moveEagle11 {
+  0% {
+    left: -100px;
+    top: 10%;
+  }
+
+  20% {
+    top: 50%;
+  }
+
+  50% {
+    top: 30%;
+  }
+
+  75% {
+    top: 60%;
+  }
+
+  100% {
+    left: calc(100% + 100px);
+    top: 10%;
+  }
+}
+
+@keyframes moveEagle12 {
+  0% {
+    left: -100px;
+    top: 40%;
+  }
+
+  30% {
+    top: 20%;
+  }
+
+  60% {
+    top: 60%;
+  }
+
+  100% {
+    left: calc(100% + 100px);
+    top: 40%;
+  }
+}
+
+@keyframes moveEagle13 {
+  0% {
+    left: -100px;
+    top: 50%;
+  }
+
+  25% {
+    top: 20%;
+  }
+
+  50% {
+    top: 70%;
+  }
+
+  75% {
+    top: 40%;
+  }
+
+  100% {
+    left: calc(100% + 100px);
+    top: 50%;
+  }
+}
+
+@keyframes moveEagle14 {
+  0% {
+    left: -100px;
+    top: 30%;
+  }
+
+  40% {
+    top: 60%;
+  }
+
+  70% {
+    top: 20%;
+  }
+
+  100% {
+    left: calc(100% + 100px);
+    top: 30%;
+  }
+}
+
+/* Add more keyframes as needed */
+
+.social-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.yt-icon {
+  width: 42px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.discord-icon {
+  width: 40px;
+  height: 30px;
+  cursor: pointer;
+}
+
+@keyframes twist {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  50% {
+    transform: rotateY(180deg);
+  }
+
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.custom-alert-image {
+  animation: twist 2s infinite;
+}
