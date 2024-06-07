@@ -128,9 +128,13 @@ video {
   font-family: "Comic Neue", sans-serif;
 }
 
-#your-score,
+#your-score {
+  margin: 5px 0;
+}
+
 #high-score {
   margin: 5px 0;
+  display: none;
 }
 
 #eagle {
