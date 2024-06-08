@@ -497,3 +497,20 @@ video {
 .custom-alert-image {
   animation: twist 2s infinite;
 }
+
+@keyframes rainbowWave {
+  0% { color: black; }
+  8.6% { color: red; }
+  14.3% { color: orange; }
+  28.6% { color: yellow; }
+  42.9% { color: green; }
+  57.2% { color: blue; }
+  71.5% { color: indigo; }
+  85.8% { color: violet; }
+  94% { color: red; }
+  100% { color: black; }
+}
+
+.rainbow-wave {
+  animation: rainbowWave 0.5s steps(7) infinite;
+}
