@@ -62,10 +62,20 @@ document.addEventListener("keyup", (event) => {
   }
 });
 
-// Function to update the score
 function updateScore() {
-  yourScore++;
-  yourScoreElement.textContent = `Score: ${yourScore}`;
+    yourScore++;
+    yourScoreElement.textContent = `Score: ${yourScore}`;
+    if (yourScore % 1000 === 0) {
+        applyRainbowEffect(); // Apply the rainbow effect when score reaches a new multiple of 1000
+    }
+}
+
+// Function to apply rainbow wave effect to the score
+function applyRainbowEffect() {
+    yourScoreElement.classList.add("rainbow-wave");
+    setTimeout(() => {
+        yourScoreElement.classList.remove("rainbow-wave");
+    }, 2000);
 }
 
 // Function to move the character and handle collisions
