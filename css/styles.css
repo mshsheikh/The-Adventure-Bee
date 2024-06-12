@@ -128,6 +128,22 @@ video {
   font-family: "Comic Neue", sans-serif;
 }
 
+#level-container {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  font-family: "Comic Neue", sans-serif;
+  text-align: center;
+}
+
+#level-text {
+  font-size: 22px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
 #your-score {
   margin: 5px 0;
 }
@@ -500,14 +516,15 @@ video {
 
 @keyframes rainbowWave {
   0% { color: black; }
-  8.6% { color: red; }
-  14.3% { color: orange; }
-  28.6% { color: yellow; }
-  42.9% { color: green; }
-  57.2% { color: blue; }
-  71.5% { color: indigo; }
-  85.8% { color: violet; }
-  94% { color: red; }
+  10% { color: red; }
+  20% { color: orange; }
+  30% { color: yellow; }
+  40% { color: green; }
+  50% { color: blue; }
+  60% { color: indigo; }
+  70% { color: violet; }
+  90% { color: green; }  
+  80% { color: red; }
   100% { color: black; }
 }
 
