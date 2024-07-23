@@ -1,46 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Adventure Bee</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" href="img/iconBee.png" />
-  </head>
 
-  <body>
-    <div id="game-container">
-      <img id="character" src="anim/bee.gif" alt="Game Character" />
-      <img
-        id="play-pause-button"
-        src="img/play-pause-button.png"
-        alt="Play/Pause Button"
-      />
-      <img id="raccoon" src="anim/raccoon.gif" alt="Running Raccoon" />
-      <img id="eagle" src="anim/eagle.gif" alt="Flying Eagle" />
-      <div id="game-over" class="hidden">GAME OVER!</div>
-      <div id="level-container">
-        <div id="level-text">Level 1</div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Adventure Bee</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="img/iconBee.png" />
+</head>
+
+<body>
+  <div id="game-container">
+    <div id="life-container">
+      <div id="life-label">Life:</div>
+      <div id="life-bar-container">
+        <div id="life-bar"></div>
       </div>
-      <div id="score-container">
-        <b>
-          <div id="player-name">Player: </div>
-          <div id="your-score">Score: 0</div>
-          <div id="high-score">High Score: 0</div>
-        </b>
-      </div>      
     </div>
-    <script src="js/script.js"></script>
-    <div id="video-container">
-      <video autoplay loop muted>
-        <source src="vids/video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+    <img id="character" src="anim/bee.gif" alt="Game Character" />
+    <img id="play-pause-button" src="img/play-pause-button.png" alt="Play/Pause Button" />
+    <img id="raccoon" src="anim/raccoon.gif" alt="Running Raccoon" />
+    <img id="eagle" src="anim/eagle.gif" alt="Flying Eagle" />
+    <div id="game-over" class="hidden">GAME OVER!</div>
+    <div id="level-container">
+      <div id="level-text">Level 1</div>
     </div>
-  </body>
+    <div id="score-container">
+      <b>
+        <div id="player-name">Player: </div>
+        <div id="your-score">Score: 0</div>
+        <div id="high-score">High Score: 0</div>
+      </b>
+    </div>
+  </div>
+  <script src="js/script.js"></script>
+  <div id="video-container">
+    <video autoplay loop muted>
+      <source src="vids/video.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</body>
+
 </html>
