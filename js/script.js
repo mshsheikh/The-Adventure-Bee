@@ -4,6 +4,7 @@ const eagle = document.getElementById("eagle");
 const gameOver = document.getElementById("game-over");
 const yourScoreElement = document.getElementById("your-score");
 const highScoreElement = document.getElementById("high-score");
+const lifeBar = document.getElementById("life-bar");
 
 // Retrieve the player's name from localStorage
 const playerName = localStorage.getItem("playerName");
@@ -19,6 +20,8 @@ let yourScore = 0;
 let highScore = 0;
 let isCollision = false;
 let isEagleCollision = false;
+let life = 100; // Initial life value
+let raccoonSpeedIncrement = 6; // Initial raccoon speed (in seconds)
 
 // Bee's initial position:
 const screenWidth = document.documentElement.clientWidth;
@@ -63,19 +66,26 @@ document.addEventListener("keyup", (event) => {
 });
 
 function updateScore() {
-    yourScore++;
-    yourScoreElement.textContent = `Score: ${yourScore}`;
-    if (yourScore % 1000 === 0) {
-        applyRainbowEffect(); // Apply the rainbow effect when score reaches a new multiple of 1000
-    }
+  yourScore++;
+  yourScoreElement.textContent = `Score: ${yourScore}`;
+  if (yourScore % 1000 === 0) {
+    applyRainbowEffect(); // Apply the rainbow effect when score reaches a new multiple of 1000
+    increaseRaccoonSpeed(); // Increase raccoon speed by 0.5 seconds
+  }
 }
 
 // Function to apply rainbow wave effect to the score
 function applyRainbowEffect() {
-    yourScoreElement.classList.add("rainbow-wave");
-    setTimeout(() => {
-        yourScoreElement.classList.remove("rainbow-wave");
-    }, 2000);
+  yourScoreElement.classList.add("rainbow-wave");
+  setTimeout(() => {
+    yourScoreElement.classList.remove("rainbow-wave");
+  }, 2000);
+}
+
+// Function to increase raccoon speed
+function increaseRaccoonSpeed() {
+  raccoonSpeedIncrement -= 0.5;
+  raccoon.style.animationDuration = `${raccoonSpeedIncrement}s`;
 }
 
 // Function to move the character and handle collisions
@@ -138,13 +148,7 @@ function handleCollision() {
     raccoon.style.animationPlayState = "paused"; // Stop raccoon animation
     character.src = "img/sadBee.png"; // Change the character to sadBee image
     isCollision = true; // Update collision state
-    if (yourScore > highScore) {
-      highScore = yourScore;
-      highScoreElement.textContent = `High Score: ${highScore}`;
-    }
-    yourScore = 0;
-    yourScoreElement.textContent = `Score: ${yourScore}`;
-    showAlert(); // Show alert
+    decreaseLife(); // Decrease life by 33%
     console.log(
       "Collision occurred with raccoon! Showing Game Over message and changing bee to sadBee."
     );
@@ -157,29 +161,36 @@ function handleEagleCollision() {
     eagle.style.animationPlayState = "paused"; // Stop eagle animation
     character.src = "img/sadBee.png"; // Change the character to sadBee image
     isEagleCollision = true; // Update eagle collision state
-    if (yourScore > highScore) {
-      highScore = yourScore;
-      highScoreElement.textContent = `High Score: ${highScore}`;
-    }
-    yourScore = 0;
-    yourScoreElement.textContent = `Score: ${yourScore}`;
-    showAlert(); // Show alert
+    decreaseLife(); // Decrease life by 33%
     console.log(
       "Collision occurred with eagle! Showing Game Over message and changing bee to sadBee."
     );
   }
 }
 
+// Function to decrease life
+function decreaseLife() {
+  if (life > 0) {
+    life -= 34;
+    if (life <= 0) {
+      life = 0;
+      lifeBar.style.width = `${life}%`;
+      showAlert(); // Show game over alert
+    } else {
+      lifeBar.style.width = `${life}%`;
+    }
+  }
+}
+
 // Function to show alert with SweetAlert and separate lines for score and restart/cancel message
 function showAlert() {
-  // Bee images for the animation
-  const beeImages = ["anim/bee.gif", "anim/bee.gif"]; // Replace with your actual image paths
-  let currentImageIndex = 0;
+  // Developer image for the popup
+  const beeImage = "img/msh.png"; // Replace with your actual image path
 
   Swal.fire({
     title: "Game Over!",
     html: `
-      ${playerName}, your score is <strong>${highScore}</strong><br>
+      ${playerName}, your score is <strong>${yourScore}</strong><br>
       <div class="social-container">
           Want to connect with me?<br>
           <strong>Follow me here:</strong><br>
@@ -201,9 +212,10 @@ function showAlert() {
       </div>
       `,
     color: "white",
-    imageUrl: beeImages[currentImageIndex],
-    imageWidth: 100,
-    imageHeight: 100,
+    imageUrl: beeImage,
+    imageWidth: 150, // Adjust the image size
+    imageHeight: 150, // Adjust the image size
+    imageClass: 'custom-image', // Add a custom class to style the image
     showCancelButton: true,
     confirmButtonText: "Restart",
     customClass: {
@@ -215,16 +227,6 @@ function showAlert() {
       title: "custom-game-over-title",
     },
     background: "rgba(0, 0, 0, 0)",
-    didOpen: () => {
-      const image = Swal.getImage();
-      image.classList.add("custom-alert-image");
-
-      // Function to toggle the bee image
-      setInterval(() => {
-        currentImageIndex = (currentImageIndex + 1) % beeImages.length;
-        image.src = beeImages[currentImageIndex];
-      }, 2000);
-    },
   }).then((result) => {
     if (result.isConfirmed) {
       window.location.reload(); // Refresh the page on Restart
@@ -240,13 +242,16 @@ styles.innerHTML = `
 .custom-alert-popup {
     font-family: 'Comic Neue', sans-serif !important;
     background: rgba(0, 0, 0, 0) !important;
+    font-size: 24px !important; /* Increase popup font size */
 }
 .custom-alert-title {
     font-family: 'Comic Neue', sans-serif !important;
+    font-size: 36px !important; /* Increase title font size */
 }
 .custom-alert-content {
     font-family: 'Comic Neue', sans-serif !important;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    font-size: 24px !important; /* Increase content font size */
 }
 .custom-game-over-title {
     font-size: 40px !important;
@@ -255,18 +260,19 @@ styles.innerHTML = `
     border: 2px solid white !important;
     color: white !important;
     background-color: darkgreen !important;
+    margin-top: -20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
     font-family: 'Comic Neue', sans-serif !important;
+    font-size: 22px !important; /* Increase button font size */
 }
 .custom-cancel-button {
     border: 2px solid white !important;
     color: white !important;
     background-color: red !important;
+    margin-top: -20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
     font-family: 'Comic Neue', sans-serif !important;
-}
-.custom-alert-image {
-    animation: twist 2s infinite;
+    font-size: 22px !important; /* Increase button font size */
 }
 `;
 document.head.appendChild(styles);
@@ -319,6 +325,17 @@ function getRandomAnimation() {
     "moveEagle12",
     "moveEagle13",
     "moveEagle14",
+    "moveEagle15",
+    "moveEagle16",
+    "moveEagle17",
+    "moveEagle18",
+    "moveEagle19",
+    "moveEagle20",
+    "moveEagle21",
+    "moveEagle22",
+    "moveEagle23",
+    "moveEagle24",
+    "moveEagle25",
   ]; // Add more animation names if created
   const randomIndex = Math.floor(Math.random() * animations.length);
   return animations[randomIndex];
