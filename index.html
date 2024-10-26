@@ -1,93 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Adventure Bee</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/styles2.css" />
-    <link rel="icon" href="img/iconBee.png" />
 
-    <style>
-      .unstyled-link {
-        color: inherit;
-        text-decoration: none;
-      }
-    </style>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Adventure Bee</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles2.css" />
+  <link rel="icon" href="img/iconBee.png" />
 
-  </head>
+  <style>
+    .unstyled-link {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
 
-  <body>
-    <div id="background-container">
-      <video autoplay loop muted>
-        <source src="vids/video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+</head>
+
+<body>
+  <div id="background-container">
+    <video autoplay loop muted>
+      <source src="vids/video.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div id="content-container">
+    <img src="anim/bee.gif" alt="Bee" id="bee" />
+    <svg viewBox="0 0 500 100">
+      <text x="50%" y="70%" dominant-baseline="middle" text-anchor="middle">
+        The Adventure Bee
+      </text>
+    </svg>
+    <div id="name-container">
+      <input type="text" id="player-name" placeholder="Enter your name" maxlength="11" />
     </div>
-    <div id="content-container">
-      <img src="anim/bee.gif" alt="Bee" id="bee" />
-      <svg viewBox="0 0 500 100">
-        <text x="50%" y="70%" dominant-baseline="middle" text-anchor="middle">
-          The Adventure Bee
-        </text>
-      </svg>
-      <div id="name-container">
-        <input
-          type="text"
-          id="player-name"
-          placeholder="Enter your name"
-          maxlength="11"
-        />
-      </div>
-      <button id="play-now-button"><b>Play Now</b></button>
-      <p id="name-error" style="color: red; display: none">
-        <b
-          >Please enter your name to play, and the first letter must be
-          capital.</b
-        >
-      </p>
-    </div>
-    <div id="footer">
-      <p>
-        <b
-          >&copy; 2024 The Adventure Bee<br />Developed by: <a href="https://www.linkedin.com/in/mshsheikh" class="unstyled-link"
-          >Muhammad Salman Hussain</a
-        >
-      </p>
-    </div>
-    <div id="version">
-      <p><b>Version: 1.6.0</b></p>
-    </div>
-    <script>
-      document
-        .getElementById("play-now-button")
-        .addEventListener("click", function () {
-          const playerName = document.getElementById("player-name").value;
-          const nameError = document.getElementById("name-error");
-          const charError = document.getElementById("char-error");
-          const isValidName = playerName && /^[A-Z]/.test(playerName);
+    <button id="play-now-button"><b>Play Now</b></button>
+    <p id="name-error" style="color: red; display: none">
+      <b>Please enter your name to play, and the first letter must be
+        capital.</b>
+    </p>
+  </div>
+  <div id="footer">
+    <p>
+      <b>&copy; 2024 The Adventure Bee<br />Made with ❤️ by <a id="linkedin-link"
+          href="https://www.linkedin.com/in/mshsheikh" class="unstyled-link"></a>
+    </p>
+  </div>
+  <div id="version">
+    <p><b>Version: 2.0.0</b></p>
+  </div>
+  <script>
+    document
+      .getElementById("play-now-button")
+      .addEventListener("click", function () {
+        const playerName = document.getElementById("player-name").value;
+        const nameError = document.getElementById("name-error");
+        const charError = document.getElementById("char-error");
+        const isValidName = playerName && /^[A-Z]/.test(playerName);
 
-          if (playerName.length > 11) {
-            charError.style.display = "block";
-            nameError.style.display = "none";
-          } else if (isValidName) {
-            localStorage.setItem("playerName", playerName);
-            window.location.href = "game.html";
-          } else {
-            nameError.style.display = "block";
-            charError.style.display = "none";
-          }
-        });
+        if (playerName.length > 11) {
+          charError.style.display = "block";
+          nameError.style.display = "none";
+        } else if (isValidName) {
+          localStorage.setItem("playerName", playerName);
+          window.location.href = "game.html";
+        } else {
+          nameError.style.display = "block";
+          charError.style.display = "none";
+        }
+      });
 
-      document
-        .getElementById("player-name")
-        .addEventListener("input", function () {
-          document.getElementById("name-error").style.display = "none";
-          document.getElementById("char-error").style.display = "none";
-        });
-    </script>
-  </body>
+    document
+      .getElementById("player-name")
+      .addEventListener("input", function () {
+        document.getElementById("name-error").style.display = "none";
+        document.getElementById("char-error").style.display = "none";
+      });
+  </script>
+  <script src="js/typingStyle.js"></script>
+</body>
+
 </html>
