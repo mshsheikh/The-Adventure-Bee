@@ -18,6 +18,13 @@
       rel="stylesheet"
     />
     <link rel="icon" href="img/iconBee.png" />
+    <script src="js/script.js"></script>
+    <script>
+      document.addEventListener("gesturestart", function (e) {
+        e.preventDefault();
+        document.body.style.zoom = 1.0;
+      });
+    </script>
   </head>
 
   <body>
@@ -48,7 +55,6 @@
         </b>
       </div>
     </div>
-    <script src="js/script.js"></script>
     <div id="video-container">
       <video autoplay loop muted>
         <source src="vids/video.mp4" type="video/mp4" />
