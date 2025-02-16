@@ -1,4 +1,12 @@
+html {
+  touch-action: pan-x pan-y; /* Pinch-zoom OFF */
+  overflow: hidden;
+}
+
 body {
+  touch-action: pan-x pan-y;
+  overflow: hidden;
+  zoom: reset !important; /* Fallback */
   display: flex;
   justify-content: center;
   align-items: center;
