@@ -1,3 +1,20 @@
+html {
+  touch-action: pan-x pan-y; /* Pinch-zoom OFF */
+  overflow: hidden;
+}
+
+body {
+  touch-action: pan-x pan-y;
+  overflow: hidden;
+  zoom: reset !important; /* Fallback */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
 body {
   display: flex;
   justify-content: center;
