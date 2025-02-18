@@ -15,7 +15,12 @@
       text-decoration: none;
     }
   </style>
-
+    <script>
+      document.addEventListener("gesturestart", function (e) {
+        e.preventDefault();
+        document.body.style.zoom = 1.0;
+      });
+    </script>
 </head>
 
 <body>
