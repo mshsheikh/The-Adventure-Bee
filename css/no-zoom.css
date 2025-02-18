@@ -1,0 +1,30 @@
+html {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    -ms-touch-action: none;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%!important;
+    height: 100%!important;
+    position: fixed;
+    -webkit-user-zoom: fixed;
+    zoom: 1;
+    transform-origin: 0 0;
+}
+
+#zoom-container {
+    transform-origin: 0 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
