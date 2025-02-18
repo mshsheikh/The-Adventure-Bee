@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var texts = ["Muhammad Salman Hussain", "View Profile"];
   var index = 0;
   var typingIndex = 0;
-  var typingSpeed = 70; // Speed of typing effect
-  var delay = 1500; // Delay between text changes
+  var typingSpeed = 70; // Speed of typing effec
+  var delay = 1500; // Delay in text changes
   function typeText(text) {
     if (!link) return;
     link.textContent = "";
