@@ -308,7 +308,7 @@ function resumeEagleGame() {
   console.log("No collision with eagle."); // Resume eagle animation
 }
 
-// Function to get a random animation for the eagle
+// Get a random animation for the eagle
 function getRandomAnimation() {
   const animations = [
     "moveEagle1",
