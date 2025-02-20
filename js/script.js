@@ -336,7 +336,8 @@ function getRandomAnimation() {
     "moveEagle23",
     "moveEagle24",
     "moveEagle25",
-  ]; // Add more animation names if created
+    // More animation names if created
+  ];
   const randomIndex = Math.floor(Math.random() * animations.length);
   return animations[randomIndex];
 }
