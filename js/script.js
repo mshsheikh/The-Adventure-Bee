@@ -303,7 +303,7 @@ function resumeGame() {
 function resumeEagleGame() {
   eagle.style.animationPlayState = "running";
   gameOver.classList.add("hidden"); // Hide the "Game Over" message
-  character.src = `anim/bee.gif?${new Date().getTime()}`; // Change the character back to bee image with a unique query string
+  character.src = `anim/bee.gif?${new Date().getTime()}`; // Change the character back to bee image with a 'unique query' string
   isEagleCollision = false; // Update eagle collision state
   console.log("No collision with eagle."); // Resume eagle animation
 }
