@@ -299,7 +299,7 @@ function resumeGame() {
   console.log("No collision with raccoon."); // Resume raccoon animation
 }
 
-// Function to resume the game after collision with eagle
+// Resume the game after collision with eagle
 function resumeEagleGame() {
   eagle.style.animationPlayState = "running";
   gameOver.classList.add("hidden"); // Hide the "Game Over" message
