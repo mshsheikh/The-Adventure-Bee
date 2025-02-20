@@ -29,7 +29,7 @@ const characterWidth = character.offsetWidth;
 characterLeft = screenWidth * (3 / 10) - characterWidth / 2; // Bee's position
 character.style.left = `${characterLeft}px`;
 
-// Function to start the game and make the eagle appear after 10 seconds
+// Start the game and make the eagle appear after 10 seconds
 function startGame() {
   setTimeout(() => {
     // Code to make the eagle appear after 10 seconds
