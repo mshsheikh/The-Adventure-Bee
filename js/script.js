@@ -277,7 +277,7 @@ styles.innerHTML = `
 `;
 document.head.appendChild(styles);
 
-// Function to restart the game
+// Restart the game
 function restartGame() {
   // Reset game state
   yourScore = 0;
