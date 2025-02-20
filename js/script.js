@@ -342,7 +342,7 @@ function getRandomAnimation() {
   return animations[randomIndex];
 }
 
-// Function to apply a random animation to the eagle
+// Applying random animation to the eagle
 function applyRandomEagleAnimation() {
   const randomAnimation = getRandomAnimation();
   eagle.style.animation = `${randomAnimation} 7s linear infinite`;
