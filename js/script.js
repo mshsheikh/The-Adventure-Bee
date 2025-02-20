@@ -290,7 +290,7 @@ function restartGame() {
   gameOver.classList.add("hidden"); // Hide the "Game Over" message
 }
 
-// Function to resume the game after collision with raccoon
+// Resume the game after collision with raccoon
 function resumeGame() {
   raccoon.style.animationPlayState = "running";
   gameOver.classList.add("hidden"); // Hide the "Game Over" message
